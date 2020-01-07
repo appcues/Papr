@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Appcues
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         sceneCoordinator.transition(to: Scene.papr)
 
+        Appcues.shared.setup()
+        
+        let userId = "appcues---tester"
+        let customProperties = ["name": "Appcues Tester", "email": "appcues@tester.com"]
+        let userProfileUpdate = AppcuesUserProfileUpdate(customProperties: customProperties)
+        Appcues.shared.identifyUserWithId(userId: userId)
+        Appcues.shared.record(userProfileUpdate: userProfileUpdate)
+        
         return true
+    }
+    
+    func application(_ app: UIApplication,
+                    open url: URL,
+                    options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+      return Appcues.shared.application(app, openURL: url, options: options)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {}

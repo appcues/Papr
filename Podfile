@@ -2,6 +2,7 @@
 # platform :ios, '9.0'
 
 target 'Papr' do
+  inherit! :search_paths
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   # RxSwift
@@ -10,6 +11,7 @@ target 'Papr' do
   pod 'RxCocoa'
   pod 'RxDataSources'
   pod 'Action'
+  pod "Appcues"
   
   # Network
   pod 'TinyNetworking/RxSwift'

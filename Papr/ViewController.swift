@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Appcues
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+      super.viewDidAppear(animated)
+
+      Appcues.shared.sendActivities()
     }
     
 }
